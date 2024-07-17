@@ -1,75 +1,113 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
+import React from 'react';
+import { TextField, Button, Box, Container } from '@mui/material';
+import { styled } from '@mui/system';
 import SearchIcon from '@mui/icons-material/Search';
-import { InputBase, styled, alpha, InputBaseProps } from '@mui/material';
 
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: '50px', // Rounded Full
-    backgroundColor: alpha(theme.palette.common.black, 0.10),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.black, 0.13),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(1),
-        width: 'auto',
-    },
-    '&:focus-within': { // Focused within the search bar
-        backgroundColor: alpha(theme.palette.common.black, 0.10),
-        border: '1px solid black'
+const SearchForm = styled('form')({
+  // Equivalent to bg-gray-400
+  '&.dark': {
+    backgroundColor: '#37474f' // Equivalent to dark:bg-gray-800
+  }
+});
+
+const SearchInput = styled(TextField)`
+  width: 100%;
+  & .MuiInputBase-root {
+    height: 43px;
+    width: 700px;
+    padding-right: 48px;
+    border-radius: 24px;
+    background-color: #eceff1; // Equivalent to dark:bg-gray-200
+    color: #212121; // Equivalent to dark:text-gray-800
+    &:hover {
+      background-color: #e0e0e0; // Slightly darker shade on hover
     }
-}));
+    &.Mui-focused {
+      background-color: #ffffff; // Background color on focus
+    }
+  }
+  & .MuiOutlinedInput-notchedOutline {
+    border: none;
+  }
+  & .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border: 1px solid gray; // Outline border color on focus
+  }
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
+  @media (max-width: 1024px) {
+    & .MuiInputBase-root {
+      width: 380px; // Adjust width for devices with max width of 500px
+      height: 39px;
+    }
+  }
+  @media (max-width: 768px) {
+    & .MuiInputBase-root {
+      width: 300px; // Adjust width for devices with max width of 500px
+      height: 38px;
+    }
+  }
+  @media (max-width: 425px) {
+    & .MuiInputBase-root {
+      width: 250px; // Adjust width for devices with max width of 500px
+      height: 38px;
+    }
+  }
+`;
 
-interface StyledInputBaseProps extends InputBaseProps {
-    isFocused: boolean;
-}
+const SearchButton = styled(Button)`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  min-width: 0;
+  padding: 0;
+  color: #26a69a; // Equivalent to text-teal-400
 
-const StyledInputBase = styled(InputBase)<StyledInputBaseProps>(({ theme, isFocused }) => ({
-    color: isFocused ? 'black' : 'inherit',
-    '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            width: '30ch',
-        },
-    },
-}));
+  &.dark {
+    color: #80cbc4; // Equivalent to dark:text-teal-300
+  }
 
-export default function SearchOption() {
-    const [isFocused, setIsFocused] = React.useState(false);
+  @media (max-width: 1024px) {
+    top: 8px; // Adjust if needed for smaller screens
+    right: 8px; // Adjust if needed for smaller screens
+  }
+`;
 
-    const handleFocus = () => setIsFocused(true);
-    const handleBlur = () => setIsFocused(false);
+const SearchOption = () => {
+  return (
+    <Box className="bg-gray-400 dark:bg-gray-800 flex justify-center items-center">
+      <Container sx={{ mx: 0 }} >
+        <SearchForm action="/search">
+          <Box position="relative" width="100%">
+            <SearchInput
+              name="q"
+              variant="outlined"
+              placeholder="Search"
+              InputProps={{
+                endAdornment: (
+                  <SearchButton type="submit">
+                    <SearchIcon />
+                  </SearchButton>
+                )
+              }}
+              sx={{
 
-    return (
-        <Box sx={{ flexGrow: 1 }}>
-            <Search>
-                <SearchIconWrapper>
-                    <SearchIcon style={{ color: isFocused ? '#aaaab1' : 'rgb(126 120 120)' }} />
-                </SearchIconWrapper>
-                <StyledInputBase
-                    placeholder="Search Photo..."
-                    inputProps={{ 'aria-label': 'search' }}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                    isFocused={isFocused}
-                />
-            </Search>
-        </Box>
-    );
-}
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    border: 'none',
+                  },
+                  '&:hover fieldset': {
+                    border: 'none',
+                  },
+                  '&.Mui-focused fieldset': {
+                    border: 'none', // Outline border color on focus
+                  },
+                },
+              }}
+            />
+          </Box>
+        </SearchForm>
+      </Container>
+    </Box>
+  );
+};
+
+export default SearchOption;
