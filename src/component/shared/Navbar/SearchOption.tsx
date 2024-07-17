@@ -59,7 +59,7 @@ const SearchButton = styled(Button)`
   right: 12px;
   min-width: 0;
   padding: 0;
-  color: #26a69a; // Equivalent to text-teal-400
+  color: #9d9fa1; // Equivalent to text-teal-400
 
   &.dark {
     color: #80cbc4; // Equivalent to dark:text-teal-300

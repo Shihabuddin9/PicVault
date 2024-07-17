@@ -15,6 +15,7 @@ import Link from 'next/link';
 import { Button } from '@mui/material';
 import MenuBar from './MenuBar';
 import BadgeInfo from './BadgeInfo';
+import SubmitAnImage from './SubmitAnImage';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -74,9 +75,10 @@ function Navbar() {
                             <Link href="#">Get PicVault+</Link>
                         </Typography>
 
-                        <Button sx={{ textTransform: 'none' }} variant="outlined" size="small">
+                        {/* <Button sx={{ textTransform: 'none' }} variant="outlined" size="small">
                             Submit an image
-                        </Button>
+                        </Button> */}
+                        <SubmitAnImage />
                     </Box>
 
                     <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
