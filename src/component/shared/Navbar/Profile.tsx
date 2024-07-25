@@ -6,15 +6,20 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import Link from 'next/link';
 
+const settings = [
+    { pathName: 'Profile', route: '/profile' },
+    { pathName: 'Account', route: '/account' },
+    { pathName: 'Dashboard', route: '/dashboard' },
+    { pathName: 'Logout', route: '/logout' },
+];
 
-export default function BadgeInfo() {
+export default function Profile() {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -26,7 +31,7 @@ export default function BadgeInfo() {
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Tooltip title="Notification">
+                <Tooltip title="Open settings">
                     <IconButton
                         onClick={handleClick}
                         size="small"
@@ -39,7 +44,7 @@ export default function BadgeInfo() {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <NotificationsIcon />
+                        <Avatar sx={{ width: 33, height: 33 }} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                     </IconButton>
                 </Tooltip>
             </Box>
@@ -79,7 +84,9 @@ export default function BadgeInfo() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem onClick={handleClose}>
-                    <Avatar /> Profile
+                    <Link href="/profile">
+                        <Avatar /> Profile
+                    </Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
                     <Avatar /> My account

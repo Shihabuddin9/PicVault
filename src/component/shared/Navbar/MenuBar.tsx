@@ -35,7 +35,7 @@ export default function MenuBar() {
                         aria-expanded={open ? 'true' : undefined}
                     >
                         {/* <Avatar sx={{ width: 32, height: 32 }}>M</Avatar> */}
-                        <MenuIcon sx={{ width: 32, height: 32 }} />
+                        <MenuIcon sx={{ width: 30, height: 30 }} />
                     </IconButton>
                 </Tooltip>
             </Box>

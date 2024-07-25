@@ -1,9 +1,10 @@
-import Image from "next/image";
+import MenuNavbar from "@/component/shared/MenuNavbar/MenuNavbar";
 
 export default function Home() {
   return (
     <main>
-      <h1>Photo</h1>
+      <MenuNavbar></MenuNavbar>
+      <h1>Main page</h1>
     </main>
   );
 }
