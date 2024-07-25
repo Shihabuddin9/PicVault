@@ -1,10 +1,10 @@
 import MenuNavbar from "@/component/shared/MenuNavbar/MenuNavbar";
+import TopOverview from "@/component/ui/TopOverview/TopOverview";
 
 export default function Home() {
   return (
     <main>
-      <MenuNavbar></MenuNavbar>
-      <h1>Main page</h1>
+      <TopOverview />
     </main>
   );
 }

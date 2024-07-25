@@ -8,8 +8,8 @@ import { PrevArrow, NextArrow } from "./CustomArrows";
 import { usePathname } from "next/navigation";
 
 const links = [
-    { route: "Photos", pathName: '/about' },
-    { route: "Illustrations", pathName: '/contact' },
+    { route: "Photos", pathName: '/photos' },
+    { route: "Illustrations", pathName: '/illustrations' },
     { route: "PicVault+", pathName: '/picVault' },
     { route: "Golden Hour", pathName: '/goldenHour' },
     { route: "Wallpapers", pathName: '/wallpapers' },
@@ -70,12 +70,18 @@ const MenuNavbar = () => {
                 {links.map((link, index) => {
                     const isActive = pathname === link.pathName;
                     return (
-                        <MenuItem key={index} sx={{ display: 'inline-block', backgroundColor: isActive ? '#f1f1f1' : 'inherit' }}>
-                            <Link href={link.pathName}>
-                                <Typography textAlign="center" sx={{}}>
+                        <MenuItem key={index} sx={{ display: 'inline-block', backgroundColor: isActive ? '#f1f1f1' : 'inherit', cursor: isActive ? 'default' : 'pointer' }}>
+                            {isActive ? (
+                                <Typography textAlign="center">
                                     {link.route}
                                 </Typography>
-                            </Link>
+                            ) : (
+                                <Link href={link.pathName}>
+                                    <Typography textAlign="center">
+                                        {link.route}
+                                    </Typography>
+                                </Link>
+                            )}
                         </MenuItem>
                     );
                 })}
