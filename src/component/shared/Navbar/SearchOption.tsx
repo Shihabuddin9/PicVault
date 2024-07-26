@@ -74,7 +74,7 @@ const SearchButton = styled(Button)`
 const SearchOption = () => {
   return (
     <Box className="bg-gray-400 dark:bg-gray-800 flex justify-center items-center">
-      <Container sx={{ mx: 0 }} >
+      <Container sx={{ mx: 0, paddingX: '1px' }} >
         <SearchForm action="/search">
           <Box position="relative" width="100%">
             <SearchInput

@@ -32,6 +32,9 @@ function Navbar() {
                                 letterSpacing: '.3rem',
                                 color: 'black',
                                 textDecoration: 'none',
+                                '@media screen and (max-width: 425px)': {
+                                    letterSpacing: '.0rem',
+                                }
                             }}
                         >
                             PicVault
@@ -68,7 +71,14 @@ function Navbar() {
                         </Box>
 
                         {/* profile */}
-                        <Box sx={{ flexGrow: 0, mx: { xs: 1, md: 3, lg: 3 } }}>
+                        <Box sx={{
+                            flexGrow: 0, mx: {
+                                xs: 1, md: 3, lg: 3,
+                                '@media screen and (max-width: 425px)': {
+                                    display: 'none',
+                                }
+                            }
+                        }}>
                             <Profile />
                         </Box>
 
