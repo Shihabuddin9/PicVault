@@ -9,6 +9,11 @@ export const PrevArrow = (props: any) => {
             className={className}
             style={{ ...style, display: "block", left: 0, color: 'rgb(90 75 75)', zIndex: 2 }}
             onClick={onClick}
+            sx={{
+                '@media screen and (max-width: 425px)': {
+                    marginTop: '-5px'
+                }
+            }}
         >
         </ArrowBackIosNewIcon>
     );
@@ -21,6 +26,11 @@ export const NextArrow = (props: any) => {
             className={className}
             style={{ ...style, display: "block", right: 0, color: 'rgb(90 75 75)', zIndex: 2 }}
             onClick={onClick}
+            sx={{
+                '@media screen and (max-width: 425px)': {
+                    marginTop: '-5px'
+                }
+            }}
         >
         </ArrowForwardIosIcon>
     );
