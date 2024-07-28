@@ -14,10 +14,10 @@ const links = [
     { route: "Golden Hour", pathName: '/goldenHour' },
     { route: "Wallpapers", pathName: '/wallpapers' },
     { route: "Nature", pathName: '/nature' },
-    { route: "3D Renders", pathName: '/renders' },
+    { route: "Sports", pathName: '/sports' },
     { route: "Travel", pathName: '/travel' },
     { route: "Architecture ", pathName: '/architecture' },
-    { route: "Textures & Patterns", pathName: '/texturesPatterns' },
+    { route: "Animals", pathName: '/animals' },
     { route: "Street Photography", pathName: '/streetPhotography' },
     { route: "Film", pathName: '/film' },
     { route: "Archival", pathName: '/archival' },
@@ -29,7 +29,7 @@ const links = [
     { route: "Business & Work", pathName: '/businessWork' },
     { route: "Food & Drink", pathName: '/foodDrink' },
     { route: "Health & Wellness", pathName: '/healthWellness' },
-    { route: "Sports", pathName: '/sports' },
+    { route: "3D Renders", pathName: '/renders' },
     { route: "Current Events", pathName: '/currentEvents' },
 ];
 
@@ -40,7 +40,7 @@ const MenuNavbar = () => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 8,
+        slidesToShow: 10,
         slidesToScroll: 1,
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
@@ -70,14 +70,14 @@ const MenuNavbar = () => {
                 {links.map((link, index) => {
                     const isActive = pathname === link.pathName;
                     return (
-                        <MenuItem key={index} sx={{ display: 'inline-block', backgroundColor: isActive ? '#f1f1f1' : 'inherit', cursor: isActive ? 'default' : 'pointer' }}>
+                        <MenuItem key={index} sx={{ display: 'inline-block', backgroundColor: isActive ? '#f1f1f1' : 'inherit', cursor: isActive ? 'default' : 'pointer', paddingX: 0 }}>
                             {isActive ? (
                                 <Typography textAlign="center">
                                     {link.route}
                                 </Typography>
                             ) : (
                                 <Link href={link.pathName}>
-                                    <Typography textAlign="center">
+                                    <Typography textAlign="center" >
                                         {link.route}
                                     </Typography>
                                 </Link>

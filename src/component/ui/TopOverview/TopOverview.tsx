@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const images = [
     { id: 1, img: TopOverview_1, category: 'UGC', name: 'by PicVault+ collections' },
-    { id: 2, img: TopOverview_2, category: 'Finance', name: 'by PicVault+ Illustrations' },
+    { id: 2, img: TopOverview_2, category: 'Finance', name: 'by PicVault+ Illustrate' },
     { id: 3, img: TopOverview_3, category: 'E-Vit Background', name: 'by PicVault+ collections' },
     { id: 4, img: TopOverview_4, category: 'AI', name: 'by PicVault+ collections' },
 ]
@@ -21,10 +21,10 @@ const TopOverview = () => {
                 <Grid item xs={6} sm={8} md={6} sx={{ position: 'relative' }}>
                     <Box sx={{ position: 'absolute', bottom: 0, left: 0, padding: '8px' }}>
                         <Typography variant="h4" sx={{ fontWeight: 'bold', color: 'black' }}>PicVault</Typography>
-                        <Typography variant="h6" sx={{ color: '#1e1d1d' }}>
+                        <Typography variant="h6" sx={{ color: '#6e6666' }}>
                             The internet’s source for visuals.
                         </Typography>
-                        <Typography variant="h6" sx={{ color: '#1e1d1d' }}>
+                        <Typography variant="h6" sx={{ color: '#6e6666' }}>
                             Powered by creators everywhere.
                         </Typography>
                     </Box>
@@ -57,7 +57,7 @@ const TopOverview = () => {
                                     <Image
                                         src={image.img}
                                         alt={image.name}
-                                        style={{ borderRadius: '8px 0 0 8px' }}
+                                        style={{ borderRadius: '8px' }}
                                         placeholder="blur"
                                     />
                                     <Box sx={{ marginLeft: 1 }}>
@@ -76,6 +76,7 @@ const TopOverview = () => {
                             alt="tomas-malik"
                             style={{ borderRadius: '8px 0 0 8px', width: '100%', height: 320 }}
                             placeholder="blur"
+
                         />
                         <Box style={{ width: '100%' }} sx={{ position: 'absolute', bottom: 0, left: 0, zIndex: 2, backgroundColor: 'rgba(0, 0, 0, 0.5)', color: 'white', padding: '8px' }}>
                             <Typography>Featured</Typography>

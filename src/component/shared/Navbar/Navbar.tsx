@@ -47,7 +47,7 @@ function Navbar() {
                     {/* Get PicVault+ */}
                     <Box sx={{
                         display: 'flex', justifyContent: 'around', alignItems: 'center', '@media screen and (max-width: 425px)': {
-                            display: 'none', // Applies display none for screen widths up to 960px
+                            display: 'none', // Applies display none for screen widths up to 425px
                         }
                     }}>
                         <Typography sx={{ color: 'black', mr: 2, fontSize: '0.9rem', display: { xs: 'none', md: 'block', lg: 'block' } }}>
@@ -64,7 +64,7 @@ function Navbar() {
                         <Box sx={{
                             display: 'block', // Default display for all sizes
                             '@media screen and (max-width: 425px)': {
-                                display: 'none', // Applies display none for screen widths up to 960px
+                                display: 'none', // Applies display none for screen widths up to 425px
                             }
                         }}>
                             <BadgeInfo />

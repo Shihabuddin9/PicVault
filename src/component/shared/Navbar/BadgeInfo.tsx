@@ -81,9 +81,10 @@ export default function BadgeInfo() {
             >
                 <Box sx={{ borderBottom: '1px solid #dfdbdb', pb: 1 }}>
                     {links.map((link) => (
+
                         <MenuItem
                             key={link.id}
-                            sx={{ display: 'inline-block', mx: 5 }}
+                            sx={{ display: 'inline-block', mx: 5, bgcolor: currentRoute === link.route ? 'grey.300' : 'inherit' }}
                             onClick={() => {
                                 setCurrentRoute(link.route);
                             }}

@@ -1,6 +1,9 @@
+import { Box, Typography } from "@mui/material";
 
 const loading = () => {
-    return <div>Loading...</div>
+    return <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+        <Typography variant="h6">Loading...</Typography>
+    </Box>
 
 };
 
