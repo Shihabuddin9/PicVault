@@ -6,7 +6,8 @@ import Image from 'next/image';
 import getAllPicVaultPhoto from '@/component/utils/getAllPicVaultPhoto';
 
 export default async function ImageGallery() {
-    const photos = await getAllPicVaultPhoto()
+    const photos = await getAllPicVaultPhoto();
+
     if (!photos) {
         return (
             <Container maxWidth="xl" sx={{ paddingX: '15px !important', marginTop: '60px' }}>
@@ -17,7 +18,7 @@ export default async function ImageGallery() {
     return (
         <Container maxWidth="xl" sx={{ paddingX: '15px !important', marginTop: '60px' }}>
             <Box sx={{ height: 450 }}>
-                <ImageList variant="masonry" cols={3} gap={23}>
+                <ImageList variant="masonry" cols={3} gap={22}>
                     {photos.map((item) => (
                         <ImageListItem key={item.img}>
                             <Image

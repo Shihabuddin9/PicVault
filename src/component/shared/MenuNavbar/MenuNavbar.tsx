@@ -8,7 +8,7 @@ import { PrevArrow, NextArrow } from "./CustomArrows";
 import { usePathname } from "next/navigation";
 
 const links = [
-    { route: "Photos", pathName: '/photos' },
+    { route: "Photos", pathName: '/photos', menuRoute: 'Photos' },
     { route: "Illustrations", pathName: '/illustrations' },
     { route: "PicVault+", pathName: '/picVault' },
     { route: "Golden Hour", pathName: '/goldenHour' },

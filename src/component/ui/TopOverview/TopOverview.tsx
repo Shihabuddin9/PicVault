@@ -31,21 +31,21 @@ const TopOverview = () => {
                 </Grid>
                 {/* middle portion */}
                 <Grid item xs sx={{
-                    border: '1px solid #ccc', borderRadius: '8px', padding: '12px', marginX: '22px',
+                    border: '1px solid #ccc', borderRadius: '8px', padding: '10px', marginX: '22px',
                     '@media screen and (max-width: 768px)': {
                         display: 'none',
                     }
                 }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <Typography sx={{ color: 'black', fontWeight: 'bold', marginBottom: '10px' }} variant="body1">Collections</Typography>
-                        <Typography variant="body2">See all</Typography>
+                        <Typography sx={{ '&:hover': { color: 'black' }, cursor: 'pointer' }} variant="body2">See all</Typography>
                     </Box>
                     <Box>
                         {
                             images.map(image => (
                                 <Box key={image.id} sx={{
                                     display: 'flex',
-                                    marginBottom: image.id === images.length ? 0 : '10px',
+                                    marginBottom: image.id === images.length ? 0 : '5px',
                                     transition: 'background-color 0.3s',
                                     '&:hover': {
                                         backgroundColor: 'rgba(0, 0, 0, 0.1)',
@@ -74,7 +74,7 @@ const TopOverview = () => {
                         <Image
                             src={featured}
                             alt="tomas-malik"
-                            style={{ borderRadius: '8px 0 0 8px', width: '100%', height: 320 }}
+                            style={{ borderRadius: '8px 0 0 8px', width: '100%', height: 302 }}
                             placeholder="blur"
 
                         />
