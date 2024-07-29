@@ -1,17 +1,9 @@
 
-// const getAllPicVaultPhoto = async () => {
-//     const res = await fetch("http://localhost:5000/allPhoto", {
-//         cache: "no-store"
-//     });
-
-//     return res.json()
-// }
-// export default getAllPicVaultPhoto;
 
 const API_URL = "http://localhost:5000";
 const getAllPicVaultPhotos = async () => {
     try {
-        const res = await fetch(`${API_URL}/allPhoto`, {
+        const res = await fetch(`${API_URL}/TotalPhoto`, {
             cache: "no-store"
         });
 
