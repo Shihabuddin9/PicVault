@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -85,7 +86,7 @@ export default function Profile() {
                     <Avatar /> View Profile
                 </MenuItem>
                 <Divider />
-                <Link href="/login">
+                <Link href="/signIn">
                     <MenuItem onClick={handleClose}>
                         <ListItemIcon>
                             <Logout fontSize="small" />
