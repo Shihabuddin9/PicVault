@@ -11,7 +11,7 @@ export default async function ImageGallery() {
     if (!photos) {
         return (
             <Container maxWidth="xl" sx={{ paddingX: '15px !important', marginTop: '60px' }}>
-                <Typography>No photos available.</Typography>
+                <Typography textAlign='center'>No photos available.</Typography>
             </Container>
         );
     }
