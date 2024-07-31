@@ -1,11 +1,12 @@
 "use client";
 import { createContext, ReactNode, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, UserCredential } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, UserCredential, signInWithEmailAndPassword } from "firebase/auth";
 import app from '@/firebase/firebase.config';
 
 // Define the type for your context
 interface AuthContextType {
     createUser: (email: string, password: string) => Promise<UserCredential>;
+    createLoginUser: (email: string, password: string) => Promise<UserCredential>;
     loading: boolean;
 }
 
@@ -27,8 +28,20 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
+    // create user
+    const createLoginUser = async (email: string, password: string): Promise<UserCredential> => {
+        setLoading(true);
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            return userCredential;
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const contextInfo: AuthContextType = {
         createUser,
+        createLoginUser,
         loading,
     };
 

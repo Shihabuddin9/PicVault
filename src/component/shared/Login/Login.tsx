@@ -12,17 +12,39 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { AuthContext } from '@/component/ContextProvider/Context';
+import { toast } from 'react-toastify';
 
 
 
 export default function Login() {
+    const authContext = React.useContext(AuthContext)
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+        const form = event.currentTarget;
+        const data = new FormData(form);
+
+        const email = data.get('email') as string
+        const password = data.get('password') as string
+
+        if (authContext && authContext.createLoginUser) {
+            authContext.createLoginUser(email, password)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    toast('successfully account login')
+                    // navigate(`${location.state ? location?.state : '/'}`)
+                    console.log(user);
+                    // Reset the form
+                    form.reset();
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    console.log(error);
+                    // setErrorEmail(errorCode)
+                });
+        }
     };
 
     return (
