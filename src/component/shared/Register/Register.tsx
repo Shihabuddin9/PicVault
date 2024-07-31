@@ -15,18 +15,37 @@ import Container from '@mui/material/Container';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import { Divider } from '@mui/material';
+import { AuthContext } from '@/component/ContextProvider/Context';
+import { toast } from 'react-toastify';
 
 export default function Register() {
+    const authContext = React.useContext(AuthContext)
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-            firstName: data.get('firstName'),
-            lastName: data.get('lastName')
-        });
-        event.currentTarget.reset(); // Reset the form fields
+        const form = event.currentTarget;
+        const data = new FormData(form);
+
+        const email = data.get('email') as string;
+        const password = data.get('password') as string;
+
+        if (authContext && authContext.createUser) {
+            authContext.createUser(email, password)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = userCredential.user;
+                    toast('successfully account create')
+                    // navigate(`${location.state ? location?.state : '/'}`)
+                    console.log(user);
+                    // Reset the form
+                    form.reset();
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    console.log(error);
+                    // setErrorEmail(errorCode)
+                });
+        }
     };
 
     return (
