@@ -10,13 +10,19 @@ import { useState } from 'react';
 import ImageModal from './ImageModal';
 
 interface ImageGalleryProps {
-    photos: { img: string; title: string }[] | null; // Adjust according to your actual photo object shape
+    photos: { img: string; title: string; _id: string }[] | null; // Adjust according to my actual photo object shape
 }
 
 export default function ImageGallery({ photos }: ImageGalleryProps) {
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
+    const [selectedImage, setSelectedImage] = useState<{ img: string; title: string } | null>(null);
+
+    const handleOpen = (img: string, title: string) => {
+        setSelectedImage({ img, title });
+        setOpen(true);
+    };
     const handleClose = () => setOpen(false);
+
 
     if (!photos || photos.length === 0) {
         return (
@@ -28,10 +34,10 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
     return (
         <Container maxWidth="xl" sx={{ paddingX: '15px !important', marginTop: '60px' }}>
             <Box sx={{ height: 450 }}>
-                <ImageList variant="masonry" cols={3} gap={22}>
+                <ImageList variant="masonry" cols={3} gap={10}>
                     {photos.map((item) => (
-                        <ImageListItem key={item.img}>
-                            <Button onClick={handleOpen}>
+                        <ImageListItem key={item._id}>
+                            <Button onClick={() => handleOpen(item.img, item.title)}>
                                 <Image
                                     src={item.img}
                                     alt={item.title}
@@ -46,7 +52,12 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
                         </ImageListItem>
                     ))}
                 </ImageList>
-                <ImageModal handleOpen={handleOpen} handleClose={handleClose} open={open} setOpen={setOpen} />
+                <ImageModal
+                    handleClose={handleClose}
+                    open={open}
+                    img={selectedImage?.img ?? ''}
+                    title={selectedImage?.title ?? ''}
+                />
             </Box>
         </Container>
     );

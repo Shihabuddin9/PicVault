@@ -1,39 +1,40 @@
 'use client';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Dispatch, SetStateAction } from 'react';
+import Image from 'next/image';
+import ImageDownload from './ImageDownload'
 
 const style = {
     position: 'absolute' as 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    maxHeight: '80vh', // Set a max height to the modal
+    overflowY: 'auto', // Enable vertical scrolling
 };
 
 type ImageModalProps = {
-    handleOpen: () => void
     handleClose: () => void
     open: boolean
-    setOpen: Dispatch<SetStateAction<boolean>>
+    // photo: {
+    //     img: string;
+    //     title: string;
+    //     _id: string;
+    // } | null
+    img: string;
+    title: string;
 
 }
 
-export default function ImageModal({ handleOpen, handleClose, open, setOpen }: ImageModalProps) {
-    // const [open, setOpen] = React.useState(false);
-    // const handleOpen = () => setOpen(true);
-    // const handleClose = () => setOpen(false);
-
+export default function ImageModal({ handleClose, open, img, title }: ImageModalProps) {
     return (
-        <div>
-            {/* <Button onClick={handleOpen}>Open modal</Button> */}
+        <Box sx={{}}>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -41,14 +42,22 @@ export default function ImageModal({ handleOpen, handleClose, open, setOpen }: I
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                        <Typography>{title}</Typography>
+                        <ImageDownload />
+                    </Box>
+                    <Box>
+                        <Image
+                            src={img}
+                            alt={title}
+                            width={600}
+                            height={400}
+                            layout="responsive"
+                            loading="lazy"
+                        />
+                    </Box>
                 </Box>
             </Modal>
-        </div>
+        </Box>
     );
 }
