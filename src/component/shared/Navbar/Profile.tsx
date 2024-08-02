@@ -100,7 +100,7 @@ export default function Profile() {
 
                 <Link href='/profile'>
                     <MenuItem onClick={handleClose}>
-                        <Avatar /> View Profile
+                        View Profile
                     </MenuItem>
                 </Link>
 
