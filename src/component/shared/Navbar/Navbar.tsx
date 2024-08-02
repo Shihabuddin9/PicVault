@@ -9,8 +9,8 @@ import SearchOption from './SearchOption';
 import Link from 'next/link';
 import MenuBar from './MenuBar';
 import BadgeInfo from './BadgeInfo';
-import SubmitAnImage from './SubmitAnImage';
 import Profile from './Profile';
+import { Button } from '@mui/material';
 
 function Navbar() {
     return (
@@ -55,10 +55,11 @@ function Navbar() {
                         </Typography>
 
                         {/* Submit An Image and private route */}
-
-                        <SubmitAnImage />
-
-
+                        <Link href='/submitAnImage'>
+                            <Button sx={{ textTransform: 'none' }} variant="outlined" size="small">
+                                Submit an image
+                            </Button>
+                        </Link>
                     </Box>
 
                     <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>
