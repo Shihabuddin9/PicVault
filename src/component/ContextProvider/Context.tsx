@@ -68,6 +68,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
         createLogOut,
         user,
         loading,
+
     };
 
     return (

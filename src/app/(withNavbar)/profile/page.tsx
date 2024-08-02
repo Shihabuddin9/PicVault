@@ -1,11 +1,14 @@
-import React from 'react';
+import PrivateRoutes from "@/component/PrivateRoutes/PrivateRoutes";
 
 const Profile = () => {
     return (
-        <div>
+
+        <PrivateRoutes>
             <h1>profile</h1>
-        </div>
+        </PrivateRoutes>
+
     );
 };
 
 export default Profile;
+

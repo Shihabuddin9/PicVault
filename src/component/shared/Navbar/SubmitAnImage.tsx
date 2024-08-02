@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import PrivateRoutes from '@/component/PrivateRoutes/PrivateRoutes';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -26,9 +27,12 @@ export default function SubmitAnImage() {
     return (
         <div>
             {/* <Button >Open modal</Button> */}
+
             <Button onClick={handleOpen} sx={{ textTransform: 'none' }} variant="outlined" size="small">
                 Submit an image
             </Button>
+
+
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
@@ -53,6 +57,7 @@ export default function SubmitAnImage() {
                     </Box>
                 </Fade>
             </Modal>
+
         </div>
     );
 }

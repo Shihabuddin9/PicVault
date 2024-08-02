@@ -54,8 +54,11 @@ function Navbar() {
                             <Link href="#">Get PicVault+</Link>
                         </Typography>
 
-                        {/* Submit An Image */}
+                        {/* Submit An Image and private route */}
+
                         <SubmitAnImage />
+
+
                     </Box>
 
                     <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }}>

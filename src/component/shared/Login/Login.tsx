@@ -14,35 +14,37 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { AuthContext } from '@/component/ContextProvider/Context';
 import { toast } from 'react-toastify';
-
-
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function Login() {
-    const authContext = React.useContext(AuthContext)
+    const authContext = React.useContext(AuthContext);
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const redirect = searchParams.get('redirect') || '/';
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const form = event.currentTarget;
         const data = new FormData(form);
 
-        const email = data.get('email') as string
-        const password = data.get('password') as string
+        const email = data.get('email') as string;
+        const password = data.get('password') as string;
 
         if (authContext && authContext.createLoginUser) {
             authContext.createLoginUser(email, password)
                 .then((userCredential) => {
-                    // Signed up 
+                    // Signed in
                     const user = userCredential.user;
-                    toast('successfully account login')
-                    // navigate(`${location.state ? location?.state : '/'}`)
+                    toast.success('Successfully logged in');
+                    router.push(redirect); // Redirect to the original location
                     console.log(user);
                     // Reset the form
                     form.reset();
                 })
                 .catch((error) => {
                     const errorCode = error.code;
-                    console.log(error);
-                    // setErrorEmail(errorCode)
+                    console.error(error);
+                    // Handle error, e.g., setErrorEmail(errorCode)
                 });
         }
     };

@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import Link from 'next/link';
+import { AuthContext } from '@/component/ContextProvider/Context';
 
 const settings = [
     { pathName: 'Profile', route: '/profile' },
@@ -19,14 +20,26 @@ const settings = [
 ];
 
 export default function Profile() {
+    const authContext = React.useContext(AuthContext)
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
+
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleLogout = () => {
+        authContext?.createLogOut()
+            .then(() => {
+                // Sign-out successful.
+            }).catch((error) => {
+                // An error happened.
+                console.log(error);
+            });
+    }
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -43,7 +56,8 @@ export default function Profile() {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 33, height: 33 }} alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                        <Avatar sx={{ width: 33, height: 33 }} />
+
                     </IconButton>
                 </Tooltip>
             </Box>
@@ -82,18 +96,46 @@ export default function Profile() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleClose}>
-                    <Avatar /> View Profile
-                </MenuItem>
-                <Divider />
-                <Link href="/signIn">
+
+
+                <Link href='/profile'>
                     <MenuItem onClick={handleClose}>
-                        <ListItemIcon>
-                            <Logout fontSize="small" />
-                        </ListItemIcon>
-                        SignUp
+                        <Avatar /> View Profile
                     </MenuItem>
                 </Link>
+
+
+                <MenuItem onClick={handleClose}>
+                    Stats
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                    Download history
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                    Account settings
+                </MenuItem>
+                <Divider />
+                {
+                    authContext?.user ?
+                        <Link onClick={handleLogout} href="/signIn">
+                            <MenuItem onClick={handleClose}>
+                                <ListItemIcon>
+                                    <Logout fontSize="small" />
+                                </ListItemIcon>
+                                Logout
+                            </MenuItem>
+                        </Link>
+                        :
+                        <Link href="/signIn">
+                            <MenuItem onClick={handleClose}>
+                                <ListItemIcon>
+                                    <Logout fontSize="small" />
+                                </ListItemIcon>
+                                Sign in
+                            </MenuItem>
+                        </Link>
+                }
+
             </Menu>
         </React.Fragment>
     );
