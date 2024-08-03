@@ -15,10 +15,10 @@ interface ImageGalleryProps {
 
 export default function ImageGallery({ photos }: ImageGalleryProps) {
     const [open, setOpen] = useState(false);
-    const [selectedImage, setSelectedImage] = useState<{ img: string; title: string } | null>(null);
+    const [selectedImage, setSelectedImage] = useState<{ img: string; title: string; _id: string } | null>(null);
 
-    const handleOpen = (img: string, title: string) => {
-        setSelectedImage({ img, title });
+    const handleOpen = (img: string, title: string, _id: string) => {
+        setSelectedImage({ img, title, _id });
         setOpen(true);
     };
     const handleClose = () => setOpen(false);
@@ -37,7 +37,15 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
                 <ImageList variant="masonry" cols={3} gap={10}>
                     {photos.map((item) => (
                         <ImageListItem key={item._id}>
-                            <Button onClick={() => handleOpen(item.img, item.title)}>
+                            <Button
+                                sx={{
+                                    position: 'relative',
+                                    overflow: 'hidden',
+                                    '&:hover img': {
+                                        filter: 'blur(2px)',
+                                    },
+                                }}
+                                onClick={() => handleOpen(item.img, item.title, item._id)}>
                                 <Image
                                     src={item.img}
                                     alt={item.title}
@@ -57,6 +65,7 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
                     open={open}
                     img={selectedImage?.img ?? ''}
                     title={selectedImage?.title ?? ''}
+                    _id={selectedImage?._id ?? ''}
                 />
             </Box>
         </Container>

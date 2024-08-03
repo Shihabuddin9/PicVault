@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/component/shared/Navbar/Navbar";
 import MenuNavbar from "@/component/shared/MenuNavbar/MenuNavbar";
-import Footer from "@/component/shared/Footer/Footer";
 import AuthProvider from "@/component/ContextProvider/Context";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
@@ -29,7 +28,6 @@ export default function RootLayout({
           <MenuNavbar />
           {children}
           <ToastContainer />
-          <Footer />
         </AuthProvider >
       </body>
     </html>

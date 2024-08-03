@@ -56,7 +56,12 @@ function Navbar() {
 
                         {/* Submit An Image and private route */}
                         <Link href='/submitAnImage'>
-                            <Button sx={{ textTransform: 'none' }} variant="outlined" size="small">
+                            <Button sx={{
+                                textTransform: 'none',
+                                color: 'gray',
+                                borderColor: 'gray',
+                                "&:hover": { color: 'darkgray', borderColor: 'darkgray' }
+                            }} variant="outlined" size="small">
                                 Submit an image
                             </Button>
                         </Link>
