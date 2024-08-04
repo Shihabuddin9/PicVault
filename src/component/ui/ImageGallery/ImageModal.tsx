@@ -57,7 +57,7 @@ export default function ImageModal({ handleClose, open, img, title, _id }: Image
                                 <IconButton aria-label="add to favorites">
                                     <AddCircleIcon sx={{ '&:hover': { color: "black" } }} />
                                 </IconButton>
-                                <ImageDownload _id={_id} />
+                                <ImageDownload _id={_id} title={title} />
                             </Box>
                         </Box>
                         <Box>
@@ -94,6 +94,9 @@ export default function ImageModal({ handleClose, open, img, title, _id }: Image
                     </Box>
                     <Box>
                         <Typography variant='h5' sx={{ color: 'black' }}>Related images</Typography>
+                    </Box>
+                    <Box>
+
                     </Box>
                 </Box>
             </Modal>

@@ -52,8 +52,9 @@ const StyledMenu = styled((props: MenuProps) => (
 
 type IdProps = {
     _id: string
+    title: string
 }
-export default function CustomizedMenus({ _id }: IdProps) {
+export default function CustomizedMenus({ _id, title }: IdProps) {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [imageUrl, setImageUrl] = React.useState<string>('');
     const open = Boolean(anchorEl);
@@ -62,7 +63,7 @@ export default function CustomizedMenus({ _id }: IdProps) {
         // Fetch the image URL from the backend
         const fetchImageUrl = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/TotalPhoto/${_id}`);
+                const response = await fetch(`https://photo-server-lilac.vercel.app/TotalPhoto/${_id}`);
                 const data = await response.json();
                 setImageUrl(data.img); // Adjust if the URL is in a different field
                 console.log(data);
@@ -138,7 +139,7 @@ export default function CustomizedMenus({ _id }: IdProps) {
             >
                 <MenuItem
                     onClick={() => {
-                        handleDownload('PicVault-image-small.jpg');
+                        handleDownload(`${title}-image-small.jpg`);
                         handleClose();
                     }}
                     disableRipple
@@ -147,7 +148,7 @@ export default function CustomizedMenus({ _id }: IdProps) {
                 </MenuItem>
                 <MenuItem disableRipple
                     onClick={() => {
-                        handleDownload('PicVault-image-Medium.jpg');
+                        handleDownload(`${title}-image-Medium.jpg`);
                         handleClose();
                     }}
                 >
@@ -155,7 +156,7 @@ export default function CustomizedMenus({ _id }: IdProps) {
                 </MenuItem>
                 <MenuItem disableRipple
                     onClick={() => {
-                        handleDownload('PicVault-image-Large.jpg');
+                        handleDownload(`${title}-image-Large.jpg`);
                         handleClose();
                     }}
                 >
@@ -164,7 +165,7 @@ export default function CustomizedMenus({ _id }: IdProps) {
                 <Divider sx={{ my: 0.5 }} />
                 <MenuItem disableRipple
                     onClick={() => {
-                        handleDownload('PicVault-image-Original.jpg');
+                        handleDownload(`${title}-image-Original.jpg`);
                         handleClose();
                     }}
                 >

@@ -105,13 +105,13 @@ export default function Profile() {
                 </Link>
 
 
-                <MenuItem onClick={handleClose}>
+                <MenuItem disabled onClick={handleClose}>
                     Stats
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem disabled onClick={handleClose}>
                     Download history
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem disabled onClick={handleClose}>
                     Account settings
                 </MenuItem>
                 <Divider />

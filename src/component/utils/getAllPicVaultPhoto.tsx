@@ -1,6 +1,4 @@
-
-
-const API_URL = "http://localhost:5000";
+const API_URL = "https://photo-server-lilac.vercel.app/";
 const getAllPicVaultPhotos = async () => {
     try {
         const res = await fetch(`${API_URL}/TotalPhoto`, {

@@ -1,6 +1,4 @@
-// components/ImageGallery.tsx
 'use client';
-
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -42,7 +40,7 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
                                     position: 'relative',
                                     overflow: 'hidden',
                                     '&:hover img': {
-                                        filter: 'blur(2px)',
+                                        filter: 'blur(3px)',
                                     },
                                 }}
                                 onClick={() => handleOpen(item.img, item.title, item._id)}>
