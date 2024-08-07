@@ -1,9 +1,13 @@
 import React from 'react';
 import HigherOrderFunction from '@/component/utils/HigherOrderFunction/HigherOrderFunction';
+import { Box } from '@mui/material';
+import WithMenuNavbarImageGallery from '@/component/ui/WithMenuNavbarImageGallery/WithMenuNavbarImageGallery';
 
 interface Photo {
     category: string;
-    // Add other properties of the photo as needed
+    img: string; // URL or path to the image
+    title: string; // Title or description of the image
+    _id: string;
 }
 
 interface FilterPhotoProps {
@@ -11,18 +15,11 @@ interface FilterPhotoProps {
 }
 
 const Illustrations: React.FC<FilterPhotoProps> = ({ filterPhoto }) => {
-    console.log(filterPhoto);
     return (
-        <div>
+        <Box>
             <h1>Illustrations</h1>
-            {/* Use filterPhoto here, for example: */}
-            {filterPhoto.map((photo, index) => (
-                <div key={index}>
-                    {/* Render photo details here */}
-                    <p>{photo.category}</p>
-                </div>
-            ))}
-        </div>
+            <WithMenuNavbarImageGallery filterPhoto={filterPhoto} />
+        </Box>
     );
 };
 
