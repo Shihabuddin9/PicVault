@@ -1,7 +1,10 @@
-import React from 'react';
-import { TextField, Button, Box, Container } from '@mui/material';
+'use client';
+import React, { useContext } from 'react';
+import { TextField, Button, Box, Container, IconButton } from '@mui/material';
 import { styled } from '@mui/system';
 import SearchIcon from '@mui/icons-material/Search';
+import { AuthContext, AuthContextType } from '@/component/ContextProvider/Context';
+import CloseIcon from '@mui/icons-material/Close';
 
 const SearchForm = styled('form')({
   // Equivalent to bg-gray-400
@@ -72,20 +75,40 @@ const SearchButton = styled(Button)`
 `;
 
 const SearchOption = () => {
+  const authContext = useContext<AuthContextType | null>(AuthContext)
+
+  if (!authContext) {
+    // Handle the case where authContext is null (e.g., show an error or return null)
+    return <div>Error: Auth context is not available.</div>;
+  }
+
   return (
     <Box className="bg-gray-400 dark:bg-gray-800 flex justify-center items-center">
       <Container sx={{ mx: 0, paddingX: '1px' }} >
-        <SearchForm action="/search">
+        <SearchForm action="/search" onSubmit={authContext.handleSubmit}>
           <Box position="relative" width="100%">
             <SearchInput
               name="q"
               variant="outlined"
+              onChange={(e) => authContext.setSearchQuery(e.target.value)}
               placeholder="Search"
+              value={authContext.searchQuery}
               InputProps={{
                 endAdornment: (
-                  <SearchButton type="submit">
-                    <SearchIcon />
-                  </SearchButton>
+                  <>
+                    {authContext.searchQuery && (
+                      <IconButton
+                        onClick={() => authContext.setSearchQuery('')} // Clear input
+                        sx={{ padding: '5px' }}
+                      >
+                        <CloseIcon />
+                        {/* <ClearIcon /> */}
+                      </IconButton>
+                    )}
+                    <SearchButton>
+                      <SearchIcon />
+                    </SearchButton>
+                  </>
                 )
               }}
               sx={{

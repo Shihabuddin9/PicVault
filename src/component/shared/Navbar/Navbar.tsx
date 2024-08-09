@@ -51,7 +51,7 @@ function Navbar() {
                         }
                     }}>
                         <Typography sx={{ color: 'black', mr: 2, fontSize: '0.9rem', display: { xs: 'none', md: 'block', lg: 'block' } }}>
-                            <Link href="#">Get PicVault+</Link>
+                            <Link href="/picVault">Get PicVault+</Link>
                         </Typography>
 
                         {/* Submit An Image and private route */}

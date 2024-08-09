@@ -6,6 +6,9 @@ import TopOverview_3 from "@/assets/TopOverview-img/TopOverview-3.avif"
 import TopOverview_4 from "@/assets/TopOverview-img/TopOverview-4.avif"
 import featured from "@/assets/TopOverview-img/$REW4YT0.jpg"
 import Image from "next/image";
+import Link from "next/link";
+import { AuthContext } from "@/component/ContextProvider/Context";
+import React from "react";
 
 const images = [
     { id: 1, img: TopOverview_1, category: 'UGC', name: 'by PicVault+ collections' },
@@ -15,6 +18,11 @@ const images = [
 ]
 
 const TopOverview = () => {
+    const authContext = React.useContext(AuthContext);
+    const searchQuery = authContext?.searchQuery ?? '';
+    if (searchQuery.length > 0) {
+        return '';
+    }
     return (
         <Container maxWidth="xl" sx={{ paddingX: '15px !important', marginTop: '60px', overflow: 'hidden' }}>
             <Grid container >
@@ -36,41 +44,43 @@ const TopOverview = () => {
                         display: 'none',
                     }
                 }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography sx={{ color: 'black', fontWeight: 'bold', marginBottom: '10px' }} variant="body1">Collections</Typography>
-                        <Typography sx={{ '&:hover': { color: 'black' }, cursor: 'pointer' }} variant="body2">See all</Typography>
-                    </Box>
-                    <Box>
-                        {
-                            images.map(image => (
-                                <Box key={image.id} sx={{
-                                    display: 'flex',
-                                    marginBottom: image.id === images.length ? 0 : '5px',
-                                    transition: 'background-color 0.3s',
-                                    '&:hover': {
-                                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
-                                    },
-                                    padding: '7px',
-                                    borderRadius: '8px',
-                                    cursor: 'pointer'
-                                }}>
-                                    <Image
-                                        src={image.img}
-                                        alt={image.name}
-                                        style={{ borderRadius: '8px' }}
-                                        placeholder="blur"
-                                    />
-                                    <Box sx={{ marginLeft: 1 }}>
-                                        <Typography variant="body1">{image.category}</Typography>
-                                        <Typography variant="body2">{image.name}</Typography>
+                    <Link href="/wallpapers">
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <Typography sx={{ color: 'black', fontWeight: 'bold', marginBottom: '10px' }} variant="body1">Collections</Typography>
+                            <Typography sx={{ '&:hover': { color: 'black' }, cursor: 'pointer' }} variant="body2">See all</Typography>
+                        </Box>
+                        <Box>
+                            {
+                                images.map(image => (
+                                    <Box key={image.id} sx={{
+                                        display: 'flex',
+                                        marginBottom: image.id === images.length ? 0 : '5px',
+                                        transition: 'background-color 0.3s',
+                                        '&:hover': {
+                                            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                        },
+                                        padding: '7px',
+                                        borderRadius: '8px',
+                                        cursor: 'pointer'
+                                    }}>
+                                        <Image
+                                            src={image.img}
+                                            alt={image.name}
+                                            style={{ borderRadius: '8px' }}
+                                            placeholder="blur"
+                                        />
+                                        <Box sx={{ marginLeft: 1 }}>
+                                            <Typography variant="body1">{image.category}</Typography>
+                                            <Typography variant="body2">{image.name}</Typography>
+                                        </Box>
                                     </Box>
-                                </Box>
-                            ))
-                        }
-                    </Box>
+                                ))
+                            }
+                        </Box>
+                    </Link>
                 </Grid>
                 <Grid item xs>
-                    <Box sx={{ position: 'relative', cursor: 'pointer' }}>
+                    <Box sx={{ position: 'relative' }}>
                         <Image
                             src={featured}
                             alt="tomas-malik"
