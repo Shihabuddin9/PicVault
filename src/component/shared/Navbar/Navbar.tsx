@@ -91,8 +91,6 @@ function Navbar() {
                             <Profile />
                         </Box>
 
-
-
                         {/* Menu bar */}
                         <MenuBar />
                     </Box>

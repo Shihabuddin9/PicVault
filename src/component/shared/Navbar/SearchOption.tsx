@@ -1,6 +1,6 @@
 'use client';
 import React, { useContext } from 'react';
-import { TextField, Button, Box, Container, IconButton } from '@mui/material';
+import { TextField, Button, Box, Container, IconButton, MenuItem, Menu, Typography, Grid } from '@mui/material';
 import { styled } from '@mui/system';
 import SearchIcon from '@mui/icons-material/Search';
 import { AuthContext, AuthContextType } from '@/component/ContextProvider/Context';
@@ -90,15 +90,15 @@ const SearchOption = () => {
             <SearchInput
               name="q"
               variant="outlined"
-              onChange={(e) => authContext.setSearchQuery(e.target.value)}
+              onChange={(e) => authContext?.setSearchQuery(e.target.value)}
               placeholder="Search"
-              value={authContext.searchQuery}
+              value={authContext?.searchQuery}
               InputProps={{
                 endAdornment: (
                   <>
                     {authContext.searchQuery && (
                       <IconButton
-                        onClick={() => authContext.setSearchQuery('')} // Clear input
+                        onClick={() => authContext?.setSearchQuery('')} // Clear input
                         sx={{ padding: '5px' }}
                       >
                         <CloseIcon />
