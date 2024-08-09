@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import Image from 'next/image';
 import ImageDownload from './ImageDownload'
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { IconButton } from '@mui/material';
+import { IconButton, ImageList, ImageListItem } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ClearIcon from '@mui/icons-material/Clear';
 
@@ -25,14 +25,20 @@ const style = {
 
 type ImageModalProps = {
     handleClose: () => void
-    open: boolean
+    open: boolean;
     img: string;
     title: string;
-    _id: string
-
+    _id: string;
+    photos: {
+        img: string;
+        title: string;
+        _id: string;
+    }[]
 }
 
-export default function ImageModal({ handleClose, open, img, title, _id }: ImageModalProps) {
+export default function ImageModal({ handleClose, open, img, title, _id, photos }: ImageModalProps) {
+    const filterRelatedImag = photos.filter(photo => photo.title === title)
+
     return (
         <Box>
             <Modal
@@ -57,6 +63,7 @@ export default function ImageModal({ handleClose, open, img, title, _id }: Image
                                 <IconButton aria-label="add to favorites">
                                     <AddCircleIcon sx={{ '&:hover': { color: "black" } }} />
                                 </IconButton>
+                                {/* image download portion */}
                                 <ImageDownload _id={_id} title={title} />
                             </Box>
                         </Box>
@@ -95,10 +102,29 @@ export default function ImageModal({ handleClose, open, img, title, _id }: Image
                     <Box>
                         <Typography variant='h5' sx={{ color: 'black' }}>Related images</Typography>
                     </Box>
-                    <Box>
+                    {/* Related image show */}
+                    <Box >
+                        <ImageList variant="masonry" cols={3} gap={8}>
+                            {filterRelatedImag.map((item) => (
+                                <ImageListItem key={item.img}>
 
+                                    <Image
+                                        src={item.img}
+                                        alt={item.title}
+                                        width={248}
+                                        height={248}
+                                        layout="responsive"
+                                        loading="lazy"
+                                        placeholder="blur"
+                                        blurDataURL="data:..."
+                                    />
+
+                                </ImageListItem>
+                            ))}
+                        </ImageList>
                     </Box>
                 </Box>
+
             </Modal>
         </Box>
     );

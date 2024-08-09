@@ -10,11 +10,12 @@ import { AuthContext } from '@/component/ContextProvider/Context';
 import NotFoundSearch from './NotFoundSearch';
 
 interface ImageGalleryProps {
-    photos: { img: string; title: string; _id: string }[] | null; // Adjust according to my actual photo object shape
+    photos: { category: string; img: string; title: string; _id: string; }[] | null; // Adjust according to my actual photo object shape
 }
 
 export default function ImageGallery({ photos }: ImageGalleryProps) {
     const authContext = React.useContext(AuthContext);
+
     const [open, setOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState<{ img: string; title: string; _id: string } | null>(null);
 
@@ -60,7 +61,10 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
                                                     filter: 'blur(3px)',
                                                 },
                                             }}
-                                            onClick={() => handleOpen(item.img, item.title, item._id)}>
+
+                                            onClick={() => handleOpen(item.img, item.title, item._id)}
+
+                                        >
                                             <Image
                                                 src={item.img}
                                                 alt={item.title}
@@ -88,7 +92,10 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
                                                     filter: 'blur(3px)',
                                                 },
                                             }}
-                                            onClick={() => handleOpen(item.img, item.title, item._id)}>
+
+                                            onClick={() => handleOpen(item.img, item.title, item._id)}
+
+                                        >
                                             <Image
                                                 src={item.img}
                                                 alt={item.title}
@@ -106,12 +113,15 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
                     }
 
                 </ImageList>
+                {/* image modal */}
                 <ImageModal
                     handleClose={handleClose}
+                    photos={photos}
                     open={open}
                     img={selectedImage?.img ?? ''}
                     title={selectedImage?.title ?? ''}
                     _id={selectedImage?._id ?? ''}
+
                 />
             </Box>
         </Container>

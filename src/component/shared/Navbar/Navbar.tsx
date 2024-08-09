@@ -83,16 +83,15 @@ function Navbar() {
                         <Box sx={{
                             flexGrow: 0, mx: {
                                 xs: 1, md: 3, lg: 3,
-                                '@media screen and (max-width: 425px)': {
-                                    display: 'none',
-                                }
                             }
                         }}>
                             <Profile />
                         </Box>
 
                         {/* Menu bar */}
-                        <MenuBar />
+                        <Box sx={{ '@media screen and (max-width: 425px)': { display: 'none' } }}>
+                            <MenuBar />
+                        </Box>
                     </Box>
                 </Toolbar>
             </Container>

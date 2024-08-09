@@ -1,10 +1,13 @@
 import PrivateRoutes from "@/component/PrivateRoutes/PrivateRoutes";
+import MyProfile from "@/component/ui/MyProfile/MyProfile";
+
 
 const Profile = () => {
+
     return (
 
         <PrivateRoutes>
-            <h1>profile</h1>
+            <MyProfile />
         </PrivateRoutes>
 
     );

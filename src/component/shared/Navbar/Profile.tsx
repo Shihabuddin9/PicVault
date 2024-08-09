@@ -11,6 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import Link from 'next/link';
 import { AuthContext } from '@/component/ContextProvider/Context';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 const settings = [
     { pathName: 'Profile', route: '/profile' },
@@ -56,7 +57,12 @@ export default function Profile() {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        <Avatar sx={{ width: 33, height: 33 }} />
+                        <Avatar
+                            sx={{
+                                width: 33,
+                                height: 33
+                            }}
+                        />
 
                     </IconButton>
                 </Tooltip>

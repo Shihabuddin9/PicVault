@@ -50,7 +50,7 @@ const SearchInput = styled(TextField)`
   }
   @media (max-width: 425px) {
     & .MuiInputBase-root {
-      width: 250px; // Adjust width for devices with max width of 500px
+      width: 240px; // Adjust width for devices with max width of 500px
       height: 38px;
     }
   }
