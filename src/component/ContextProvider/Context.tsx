@@ -2,7 +2,6 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, UserCredential, signInWithEmailAndPassword, signOut, onAuthStateChanged, User } from "firebase/auth";
 import app from '@/firebase/firebase.config';
-import getAllPicVaultPhotos from "../utils/getAllPicVaultPhoto";
 
 // Define the type for your context
 export interface AuthContextType {

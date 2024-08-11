@@ -17,9 +17,13 @@ import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import { Divider } from '@mui/material';
 import { AuthContext } from '@/component/ContextProvider/Context';
 import { toast } from 'react-toastify';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 export default function Register() {
     const authContext = React.useContext(AuthContext)
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const redirect = searchParams.get('redirect') || '/';
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -35,14 +39,15 @@ export default function Register() {
                     // Signed up 
                     const user = userCredential.user;
                     toast('successfully account create')
-                    // navigate(`${location.state ? location?.state : '/'}`)
-                    console.log(user);
+                    console.log('Redirecting to:', redirect); // Debugging line
+                    router.push(redirect); // Redirect to the original location
                     // Reset the form
                     form.reset();
                 })
                 .catch((error) => {
                     const errorCode = error.code;
-                    console.log(error);
+                    console.error('Registration error:', error); // Better error handling
+                    console.log(errorCode);
                     // setErrorEmail(errorCode)
                 });
         }

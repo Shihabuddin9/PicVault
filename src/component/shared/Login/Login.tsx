@@ -37,7 +37,6 @@ export default function Login() {
                     const user = userCredential.user;
                     toast.success('Successfully logged in');
                     router.push(redirect); // Redirect to the original location
-                    console.log(user);
                     // Reset the form
                     form.reset();
                 })

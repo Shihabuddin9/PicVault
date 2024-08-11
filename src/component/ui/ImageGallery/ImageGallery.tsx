@@ -10,7 +10,7 @@ import { AuthContext } from '@/component/ContextProvider/Context';
 import NotFoundSearch from './NotFoundSearch';
 
 interface ImageGalleryProps {
-    photos: { category: string; img: string; title: string; _id: string; }[] | null; // Adjust according to my actual photo object shape
+    photos: { _id: string; img: string; title: string; }[] | null; // Adjust according to my actual photo object shape
 }
 
 export default function ImageGallery({ photos }: ImageGalleryProps) {
@@ -116,12 +116,11 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
                 {/* image modal */}
                 <ImageModal
                     handleClose={handleClose}
-                    photos={photos}
                     open={open}
                     img={selectedImage?.img ?? ''}
                     title={selectedImage?.title ?? ''}
                     _id={selectedImage?._id ?? ''}
-
+                // photos={photos} // Pass the photos prop
                 />
             </Box>
         </Container>

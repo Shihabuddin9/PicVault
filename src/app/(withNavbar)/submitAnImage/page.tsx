@@ -1,11 +1,13 @@
 import PrivateRoutes from "@/component/PrivateRoutes/PrivateRoutes";
+import SubmitImage from "@/component/ui/SubmitAnImage/SubmitImage";
+import { Box } from "@mui/material";
 
 const SubmitAnImage = () => {
     return (
         <PrivateRoutes>
-            <div>
-                <h1>submitAnImage</h1>
-            </div>
+            <Box>
+                <SubmitImage />
+            </Box>
         </PrivateRoutes>
     );
 };

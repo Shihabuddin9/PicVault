@@ -23,21 +23,19 @@ const style = {
     overflowY: 'auto', // Enable vertical scrolling
 };
 
-type ImageModalProps = {
-    handleClose: () => void
+interface ImageModalProps {
+    handleClose: () => void;
     open: boolean;
     img: string;
     title: string;
     _id: string;
-    photos: {
-        img: string;
-        title: string;
-        _id: string;
-    }[]
+    // photos: { _id: string; category: string; img: string; title: string; }[] | null;
 }
 
-export default function ImageModal({ handleClose, open, img, title, _id, photos }: ImageModalProps) {
-    const filterRelatedImag = photos.filter(photo => photo.title === title)
+
+export default function ImageModal({ handleClose, open, img, title, _id }: ImageModalProps) {
+    // const filterRelatedImag = photos ? photos.filter(photo => photo.title === title) : [];
+
 
     return (
         <Box>
@@ -103,7 +101,7 @@ export default function ImageModal({ handleClose, open, img, title, _id, photos 
                         <Typography variant='h5' sx={{ color: 'black' }}>Related images</Typography>
                     </Box>
                     {/* Related image show */}
-                    <Box >
+                    {/* <Box >
                         <ImageList variant="masonry" cols={3} gap={8}>
                             {filterRelatedImag.map((item) => (
                                 <ImageListItem key={item.img}>
@@ -122,7 +120,7 @@ export default function ImageModal({ handleClose, open, img, title, _id, photos 
                                 </ImageListItem>
                             ))}
                         </ImageList>
-                    </Box>
+                    </Box> */}
                 </Box>
 
             </Modal>
