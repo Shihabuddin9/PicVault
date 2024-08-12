@@ -139,7 +139,7 @@ export default function Register() {
                     </Grid>
                 </Box>
                 {/* easy sign up */}
-                <Box sx={{ mt: 3 }}>
+                {/* <Box sx={{ mt: 3 }}>
                     <Divider sx={{ mb: 3 }}>Or with Google and facebook</Divider>
                     <Button sx={{ mr: 1 }} variant="outlined" startIcon={<GoogleIcon />}>
                         Google
@@ -147,7 +147,7 @@ export default function Register() {
                     <Button variant="outlined" startIcon={<FacebookRoundedIcon />}>
                         Facebook
                     </Button>
-                </Box>
+                </Box> */}
             </Box>
         </Container>
 
