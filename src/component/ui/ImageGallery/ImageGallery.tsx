@@ -88,10 +88,15 @@ export default function ImageGallery({ photos }: ImageGalleryProps) {
                                             sx={{
                                                 position: 'relative',
                                                 overflow: 'hidden',
+                                                '& img': {
+                                                    transition: 'transform 0.5s ease, box-shadow 0.5s ease', // Smooth transition for both zoom and shadow
+                                                },
                                                 '&:hover img': {
-                                                    filter: 'blur(3px)',
+                                                    transform: 'scale(1.1)', // Zoom in the image
+                                                    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.3)', // Shadow effect
                                                 },
                                             }}
+
 
                                             onClick={() => handleOpen(item.img, item.title, item._id)}
 
